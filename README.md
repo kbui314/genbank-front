@@ -4,6 +4,8 @@ GenBank is a minimal bank application where users can register, login, create ba
 GenBank is built using Angular 8 as the front-end, Spring Boot as the back-end, and PostgreSQL
 as the database. 
 
+Here is the Angular back-end for the GenBank Application https://github.com/kbui314/genbank-back
+
 ### Features
 * A user can register for sign up for an account.
 * A user can login to the main page to view theirs accounts.
