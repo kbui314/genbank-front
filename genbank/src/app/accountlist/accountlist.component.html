@@ -1,0 +1,67 @@
+<div style="margin-top: 10%;">
+    <button mat-raised-button color="primary" (click)="addNewAccount();">Add New Account</button>
+    <mat-accordion multi="false">
+        <mat-expansion-panel *ngFor="let account of accounts" class="accountCardWidth">
+            <mat-expansion-panel-header (click)="clearInput();">
+                <mat-panel-title>{{account.accountnumber}}</mat-panel-title>
+                <mat-panel-description>${{account.balance}}</mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-form-field>
+                <mat-label>Amount</mat-label>
+                <input #amountvalue matInput type="number" min="1">
+            </mat-form-field>
+            <div *ngIf="isTransfer">
+                <mat-form-field>
+                    <mat-label>Tranfer Account Number:</mat-label>
+                    <input [(ngModel)]="transAcc" matInput type="number" min="1">
+                </mat-form-field>
+            </div>
+            <div class="buttonContainer">
+                <div>
+                    <button mat-raised-button color="primary" (click)="deposit(account.accountnumber,amountvalue.value);">Deposit</button>
+                </div>
+                <div>
+                    <button mat-raised-button color="primary" (click)="withdraw(account.accountnumber,amountvalue.value)">Withdraw</button>
+                </div>
+                <div>
+                    <button mat-raised-button color="primary" (click)="transfer(account.accountnumber,amountvalue.value)">Transfer</button>
+                </div>
+            </div>
+            <br>
+            <table mat-table [dataSource]="sortTransaction(account.transaction)" class="mat-elevation-z8">
+                <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef> Date </th>
+                    <td mat-cell *matCellDef="let trans">{{trans.transdate | date}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="accountfrom">
+                    <th mat-header-cell *matHeaderCellDef> Account From </th>
+                    <td mat-cell *matCellDef="let trans">{{trans.accountfrom}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="transtype">
+                    <th mat-header-cell *matHeaderCellDef> Type </th>
+                    <td mat-cell *matCellDef="let trans">{{trans.transtype}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="amount">
+                    <th mat-header-cell *matHeaderCellDef> Amount </th>
+                    <td mat-cell *matCellDef="let trans">{{trans.amount | currency}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="accountto">
+                    <th mat-header-cell *matHeaderCellDef> Account To </th>
+                    <td mat-cell *matCellDef="let trans">{{trans.accountto}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="balance">
+                    <th mat-header-cell *matHeaderCellDef> Balance </th>
+                    <td mat-cell *matCellDef="let trans">{{trans.balance | currency}}</td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
