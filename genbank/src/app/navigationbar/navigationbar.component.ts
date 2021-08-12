@@ -27,8 +27,10 @@ export class NavigationbarComponent implements OnInit {
     this.loginService.logout().subscribe(resp => {
       if (resp === null){
         this.loginService.setLogin(false);
+        sessionStorage.clear();
         this.router.navigateByUrl('');
       }
+      sessionStorage.clear();
     });
   }
 

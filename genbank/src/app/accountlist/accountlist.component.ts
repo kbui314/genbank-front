@@ -132,6 +132,9 @@ export class AccountlistComponent implements OnInit {
       for (let i = 0; i < inputArray.length; i++) {
         inputArray[i].value = '';
       }
+      // for (const input of Object.keys(inputArray)){
+      //   inputArray[input] = '';
+      // }
     }
     this.isTransfer = false;
   }

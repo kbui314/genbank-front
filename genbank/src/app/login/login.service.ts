@@ -11,8 +11,10 @@ export class LoginService {
   isLogin: boolean;
   constructor(private http: HttpClient) { }
 
-  loginUser(person: Person): Observable<Person>{
-    return this.http.post<Person>(this.url + 'login', person);
+  loginUser(person: Person): Observable<string>{
+    return this.http.post(this.url + 'login',
+      {username: person.username, password: person.password}
+    , {responseType: 'text'});
   }
 
   logout(): Observable<any>{
