@@ -26,6 +26,18 @@ export class AccountlistComponent implements OnInit {
 
   ngOnInit(): void {
     this.accountListService.getAccounts().subscribe((resp) => {
+      const compare = (a: Account, b: Account): number => {
+        const idA = a.accountid;
+        const idB = b.accountid;
+        if (idA > idB) {
+          return 1;
+        } else if (idA < idB) {
+          return -1;
+        } else {
+          return 0;
+        }
+      };
+      resp.sort(compare);
       this.accounts = resp;
     });
     this.isTransfer = false;
