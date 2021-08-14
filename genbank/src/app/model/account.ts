@@ -1,13 +1,13 @@
 import { Transaction } from './transaction';
 
 export class Account{
-    id:number;
-    accountnumber:string;
-    balance:number;
-    transactions:Transaction[];
+    accountid: number;
+    accountnumber: string;
+    balance: number;
+    transactions: Transaction[];
 
-    constructor(id:number, accountnumber:string, balance:number){
-        this.id = id;
+    constructor(accountid: number, accountnumber: string, balance: number){
+        this.accountid = accountid;
         this.accountnumber = accountnumber;
         this.balance = balance;
     }

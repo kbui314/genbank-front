@@ -1,31 +1,29 @@
 import { Injectable } from '@angular/core';
-import {HttpClient,HttpHeaders} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Person } from './../model/user';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService {
-  url:String = "http://localhost:8080/";
-  isLogin:boolean;
-  constructor(private http:HttpClient) { }
+  url = 'http://localhost:8080/';
+  isLogin: boolean;
+  constructor(private http: HttpClient) {}
 
-  loginUser(person:Person): Observable<Person>{
-    return this.http.post<Person>(this.url+"login",person);
-  }
-  
-  logout():Observable<any>{
-    return this.http.get(this.url+"logout");
+  loginUser(person: Person): Observable<string> {
+    return this.http.post(
+      this.url + 'login',
+      { username: person.username, password: person.password },
+      { responseType: 'text' }
+    );
   }
 
-  setLogin(bool:boolean){
+  logout(): Observable<any> {
+    return this.http.get(this.url + 'logout');
+  }
+
+  setLogin(bool: boolean): void {
     this.isLogin = bool;
   }
 }
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json'
-  })
-};

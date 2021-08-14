@@ -1,20 +1,21 @@
-table{
-    width:100%;
+table {
+  width: 100%;
 }
 
-.accountCardWidth{
-    max-width: 1000px;
-    margin-right:auto;
-    margin-left:auto;
-    display:block;
-    margin-top: 1%;
+.accountCardWidth {
+  max-width: 1000px;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  margin-top: 1%;
 }
 
-.buttonContainer{
-    display: flex;
-    justify-content: space-between;
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
 }
 
-body{
-    overflow-y: scroll;
+body {
+  overflow-y: scroll;
 }
+

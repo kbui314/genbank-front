@@ -6,6 +6,12 @@ as the database.
 
 Here is the Angular back-end for the GenBank Application https://github.com/kbui314/genbank-back
 
+In order for the GenBank application to run as intended, the Chrome browser must be ran with security features disabled.
+If on Windows 10 operating system, run this command in RUN(Windows Key + r):
+```
+chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security
+```
+
 ### Features
 * A user can register for sign up for an account.
 * A user can login to the main page to view theirs accounts.
