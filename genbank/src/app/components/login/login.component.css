@@ -1,0 +1,23 @@
+.mat-icon {
+  font-size: 165px;
+}
+
+.iconcenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
+.cardWidth {
+  max-width: 400px;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  margin-top: 10%;
+}
+
+.linkrouter {
+  float: right;
+}
+

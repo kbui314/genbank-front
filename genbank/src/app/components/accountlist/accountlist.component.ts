@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Account } from './../model/account';
+import { Account } from '../../models/account';
 import { AccountlistService } from './accountlist.service';
-import { Transaction } from './../model/transaction';
+import { Transaction } from '../../models/transaction';
 import {Router} from '@angular/router';
 
 @Component({

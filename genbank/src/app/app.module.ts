@@ -5,11 +5,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { AccountlistComponent } from './accountlist/accountlist.component';
-import { NavigationbarComponent } from './navigationbar/navigationbar.component';
-import { MainpageComponent } from './mainpage/mainpage.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AccountlistComponent } from './components/accountlist/accountlist.component';
+import { NavigationbarComponent } from './components/navigationbar/navigationbar.component';
+import { MainpageComponent } from './components/mainpage/mainpage.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -19,7 +19,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTableModule} from '@angular/material/table';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { AuthInterceptorService } from './auth-interceptor.service';
 
 @NgModule({
