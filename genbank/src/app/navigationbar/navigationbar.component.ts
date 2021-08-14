@@ -32,6 +32,8 @@ export class NavigationbarComponent implements OnInit {
       }
       sessionStorage.clear();
     });
+    sessionStorage.clear();
+    this.router.navigateByUrl('');
   }
 
 }

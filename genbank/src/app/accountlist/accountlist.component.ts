@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Account } from './../model/account';
 import { AccountlistService } from './accountlist.service';
 import { Transaction } from './../model/transaction';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-accountlist',
@@ -22,7 +23,7 @@ export class AccountlistComponent implements OnInit {
   isTransfer = false;
   transAcc: string;
 
-  constructor(private accountListService: AccountlistService) {}
+  constructor(private accountListService: AccountlistService, private router: Router) {}
 
   ngOnInit(): void {
     this.accountListService.getAccounts().subscribe((resp) => {
@@ -39,6 +40,11 @@ export class AccountlistComponent implements OnInit {
       };
       resp.sort(compare);
       this.accounts = resp;
+    },
+    (error) => {
+      if (error.status === 403){
+        this.router.navigateByUrl('');
+      }
     });
     this.isTransfer = false;
     this.transAcc = '';
