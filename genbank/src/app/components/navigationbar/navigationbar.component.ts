@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login/login.service';
+import { PersonService } from '../../services/personservice/person.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,6 +13,7 @@ export class NavigationbarComponent implements OnInit {
   isLogin = false;
   constructor(
     private loginService: LoginService,
+    private personService: PersonService,
     private router: Router
   ) { }
 
@@ -24,9 +26,9 @@ export class NavigationbarComponent implements OnInit {
   }
 
   logout(): void{
-    this.loginService.logout().subscribe(resp => {
+    this.personService.logout().subscribe(resp => {
       if (resp === null){
-        this.loginService.setLogin(false);
+        this.personService.setLogin(false);
         sessionStorage.clear();
         this.router.navigateByUrl('');
       }

@@ -20,7 +20,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTableModule} from '@angular/material/table';
 import { FooterComponent } from './components/footer/footer.component';
-import { AuthInterceptorService } from './auth-interceptor.service';
+import { AuthInterceptorService } from './filters/auth-interceptor.service';
 
 @NgModule({
   declarations: [

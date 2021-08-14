@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {RegisterService} from './register.service';
-import { Person } from '../../models/user';
+import { Person } from '../../models/person';
 import { Router } from '@angular/router';
+import {PersonService} from 'src/app/services/personservice/person.service';
 
 @Component({
   selector:  'app-register',
@@ -17,6 +18,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private registerService: RegisterService,
+    private personService: PersonService,
     private formBuilder: FormBuilder,
     private router: Router
   ) { }
@@ -43,7 +45,7 @@ export class RegisterComponent implements OnInit {
     }
     const newUser = new Person(0, this.f.firstname.value, this.f.lastname.value,
       this.f.username.value, this.f.password.value, this.f.email.value, this.f.phonenumber.value.toString());
-    this.registerService.register(newUser).subscribe(resp => {
+    this.personService.register(newUser).subscribe(resp => {
       this.user = resp;
       if (resp.firstname !== ''){
         alert('Registration Sucess');

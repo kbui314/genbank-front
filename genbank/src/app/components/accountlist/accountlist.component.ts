@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Account } from '../../models/account';
-import { AccountlistService } from './accountlist.service';
+import { AccountService } from '../../services/accountservice/account.service';
 import { Transaction } from '../../models/transaction';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-accountlist',
@@ -23,10 +23,10 @@ export class AccountlistComponent implements OnInit {
   isTransfer = false;
   transAcc: string;
 
-  constructor(private accountListService: AccountlistService, private router: Router) {}
+  constructor(private accountService: AccountService, private router: Router) {}
 
   ngOnInit(): void {
-    this.accountListService.getAccounts().subscribe((resp) => {
+    this.accountService.getAccounts().subscribe((resp) => {
       const compare = (a: Account, b: Account): number => {
         const idA = a.accountid;
         const idB = b.accountid;
@@ -51,7 +51,7 @@ export class AccountlistComponent implements OnInit {
   }
 
   addNewAccount(): void {
-    this.accountListService.generateNewAccount().subscribe((resp) => {
+    this.accountService.generateNewAccount().subscribe((resp) => {
       this.newAccount = resp;
       if (this.newAccount.accountnumber === '') {
         alert('Unable to create a new account. Please try again later.');
@@ -73,7 +73,7 @@ export class AccountlistComponent implements OnInit {
       amount,
       'Deposit'
     );
-    this.accountListService.deposit(trans).subscribe((resp) => {
+    this.accountService.deposit(trans).subscribe((resp) => {
       if (resp.message === 'Success') {
         alert('Success');
         this.ngOnInit();
@@ -95,7 +95,7 @@ export class AccountlistComponent implements OnInit {
       amount,
       'Withdraw'
     );
-    this.accountListService.withdraw(trans).subscribe((resp) => {
+    this.accountService.withdraw(trans).subscribe((resp) => {
       if (resp.message === 'Success') {
         alert('Success');
         this.ngOnInit();
@@ -118,7 +118,7 @@ export class AccountlistComponent implements OnInit {
         amount,
         'Transfer'
       );
-      this.accountListService.tranfer(trans).subscribe((resp) => {
+      this.accountService.tranfer(trans).subscribe((resp) => {
         alert('Success');
         this.ngOnInit();
       });
