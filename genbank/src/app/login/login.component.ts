@@ -33,13 +33,10 @@ export class LoginComponent implements OnInit {
   onSubmit(): void{
     const loginUser = new Person(0, '', '', this.f.username.value, this.f.password.value, '', '');
     this.loginService.loginUser(loginUser).subscribe( resp => {
-      this.user = resp;
-      if (this.user.username === this.f.username.value){
-        this.loginService.setLogin(true);
-        this.router.navigateByUrl('/view');
-      }else{
-        alert('Username or password is invalid. Please try again.');
-      }
+      console.log(resp);
+      sessionStorage.setItem('access_token', resp);
+      this.loginService.setLogin(true);
+      this.router.navigateByUrl('/view');
     });
   }
 }
